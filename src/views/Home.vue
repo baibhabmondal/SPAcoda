@@ -59,7 +59,7 @@
       },
       async getData() {
         try {
-          const resp = await axios.get(`http://starlord.hackerearth.com/recipe`);
+          const resp = await axios.get(`/api/recipe`);
           // console.log(resp.data);
           this.recipes = resp.data;
           this.setRecipe(resp.data);
