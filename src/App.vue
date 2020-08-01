@@ -1,28 +1,37 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" >
+    <v-toolbar color="teal darken-4">
+      <v-container>
+        <v-row align="center" justify="center">
+          <v-col align="center" justify="center" class="text-center">
+            <v-toolbar-title @click="takeHome">Coda Hacked Recipe</v-toolbar-title>
+            <!-- <v-spacer></v-spacer> -->
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-toolbar>
+    <v-app>
+    <router-view/>
+    </v-app>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  import { mapActions } from 'vuex';
+  export default {
+    created() {
+      this.setRecipe();
+    },
+    methods: {
+          ...mapActions([
+            'setRecipe']),
+            takeHome() {
+                this.$router.push('/')
+              }
+        },
+        
   }
-}
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
